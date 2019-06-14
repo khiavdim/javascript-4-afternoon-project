@@ -73,7 +73,7 @@ class Manager extends Employee {
   }
 
   fire(index){
-    this.reports.filter(index => index !== index)
+    this.reports.splice(index, 1)
   }
 }
 
@@ -100,13 +100,18 @@ class Manager extends Employee {
 */
 
 // Code Here
-// class ProgressiveManager extends Manager {
-//   constructor(first_name, last_name, email, age, reports, hire(), fire()){
-//   super(first_name, last_name, email, age, reports, hire(), fire())
-//   this.title = 'Not a manager'
-//   this.bonus = 0
-//   }
-// }
+class ProgressiveManager extends Manager {
+  constructor(first_name, last_name, email, age, reports){
+    super(first_name, last_name, email, age, reports)
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
+
+  hiring
+
+  firing
+
+}
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
