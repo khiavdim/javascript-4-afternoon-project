@@ -43,7 +43,6 @@ class Employee {
   }
 
 }
-Employee()
 
 
 ////////// PROBLEM 2 //////////
@@ -103,35 +102,36 @@ class Manager extends Employee {
 // Code Here
 class ProgressiveManager extends Manager {
   constructor(first_name, last_name, email, age, reports, bonus, title){
-    super(first_name, last_name, email, age, reports)
+    super(first_name, last_name, email, age, reports, bonus, title)
     this.title = 'Not a manager'
     this.bonus = 0
   }
 
-  hiring(){
+  
+  hire(employee){
     super.hire()
     this.titleChange()
   }
-
-  firing(){
+  
+  fire(index){
     super.fire()
     this.titleChange()
-    return this.bonus += 100
+    this.bonus += 100
   }
-
+  
   titleChange(){
-    if (this.reports <= 0){
-      return this.title = 'Not a manager'
-    } else if (this.reports >= 1 || this.reports <= 3){
-      return this.title = 'Barely Manager'
-    } else if (this.reports >= 4 || this.reports <= 10){
-      return this.title = 'Mostly Manager'
-    } else if (this.reports >= 11 || this.reports <= 50){
-      return this.title = 'Manager'
-    } else if (this.reports >= 51 || this.reports <= 100){
-      return this.title = 'Manager Plus'
-    } else if (this.reports >= 101){
-      return this.title = 'Bestest Manager'
+    if (this.reports.length === 0){
+       this.title = 'Not a manager'
+    } else if (this.reports.length >= 1 && this.reports.length <= 3){
+       this.title = 'Barely Manager'
+    } else if (this.reports.length >= 4 && this.reports.length <= 10){
+       this.title = 'Mostly Manager'
+    } else if (this.reports.length >= 11 && this.reports.length <= 50){
+       this.title = 'Manager'
+    } else if (this.reports.length >= 51 && this.reports.length <= 100){
+      this.title = 'Manager Plus'
+    } else if (this.reports.length >= 101){
+      this.title = 'Bestest Manager'
     }
   }
 }
