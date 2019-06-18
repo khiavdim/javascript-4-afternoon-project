@@ -69,11 +69,11 @@ class Manager extends Employee {
   }
 
   hire(employee){
-    this.reports.push(employee)
+    return this.reports.push(employee)
   }
 
   fire(index){
-    this.reports.splice(index, 1)
+    return this.reports.splice(index, 1)
   }
 }
 
@@ -82,7 +82,8 @@ class Manager extends Employee {
 
 /*
   Managers for Widget Co. get promoted when they get more employees, and get a bonus when they fire employees.
-  create a class ProgressiveManager that extends Manager.  A Progressive Manager has all of the same properties as a manager with the following additional properties:
+  create a class ProgressiveManager that extends Manager.  A Progressive Manager has all of the same properties as a
+  manager with the following additional properties:
     - title - default 'Not a manager'
     - bonus - default 0
 
@@ -101,16 +102,38 @@ class Manager extends Employee {
 
 // Code Here
 class ProgressiveManager extends Manager {
-  constructor(first_name, last_name, email, age, reports){
+  constructor(first_name, last_name, email, age, reports, bonus, title){
     super(first_name, last_name, email, age, reports)
     this.title = 'Not a manager'
     this.bonus = 0
   }
 
-  hiring
+  hiring(){
+    super.hire()
+    this.titleChange()
+  }
 
-  firing
+  firing(){
+    super.fire()
+    this.titleChange()
+    return this.bonus += 100
+  }
 
+  titleChange(){
+    if (this.reports <= 0){
+      return this.title = 'Not a manager'
+    } else if (this.reports >= 1 || this.reports <= 3){
+      return this.title = 'Barely Manager'
+    } else if (this.reports >= 4 || this.reports <= 10){
+      return this.title = 'Mostly Manager'
+    } else if (this.reports >= 11 || this.reports <= 50){
+      return this.title = 'Manager'
+    } else if (this.reports >= 51 || this.reports <= 100){
+      return this.title = 'Manager Plus'
+    } else if (this.reports >= 101){
+      return this.title = 'Bestest Manager'
+    }
+  }
 }
 
 
